@@ -1,11 +1,12 @@
 const functions = require('firebase-functions');
-
+require('dotenv').config()
+const {SC_KEY}=process.env
 const express=require('express')
 const cors=require('cors');
 const { user } = require('firebase-functions/lib/providers/auth');
 const stripe=require('stripe')
-('sk_test_51HRColFi3enyg1Gldy2XZwpzM4zoAWviLnH7rvl0Eb0fV6hCbHbowM8ZBvrnPgOxEj3jGxMVMrZoOQdjoM3ZoEpq00moacDJLw')
-
+(SC_KEY)
+console.log("my sc ket is ",SC_KEY)
 const app=express()
 //console.log("hello world")
 
@@ -31,6 +32,8 @@ app.post('/payments/create/',async (req,res)=>{
     })
 })
 
-
+app.listen(process.env.PORT||4025,(req,res)=>{
+console.log("sun raha hu be...")
+})
 
 exports.api=functions.https.onRequest(app)
