@@ -6,7 +6,7 @@ const cors=require('cors');
 const { user } = require('firebase-functions/lib/providers/auth');
 const stripe=require('stripe')
 (SC_KEY)
-console.log("my sc ket is ",SC_KEY)
+// console.log("my sc ket is ",SC_KEY)
 const app=express()
 //console.log("hello world")
 
@@ -17,9 +17,9 @@ app.get('/',(req,res)=>{
     res.status(200).send('hello world')
 })
 app.post('/payments/create/',async (req,res)=>{
-    console.log("req comes inpost..............")
+    // console.log("req comes inpost..............")
     const total=req.query.total
-    console.log('payment req recieve>>>>>',total)
+    // console.log('payment req recieve>>>>>',total)
     // console.log(stripe)
     const paymentIntent= await stripe.paymentIntents.create({
         
@@ -33,7 +33,7 @@ app.post('/payments/create/',async (req,res)=>{
 })
 
 app.listen(process.env.PORT||4025,(req,res)=>{
-console.log("sun raha hu be...")
+// console.log("sun raha hu be...")
 })
 
 exports.api=functions.https.onRequest(app)
